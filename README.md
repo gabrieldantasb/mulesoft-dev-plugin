@@ -18,6 +18,8 @@ The development skill loads its detailed flow-design conventions only when neede
 ├── plugin.json                    # Portable Agent Plugins manifest
 ├── .codex-plugin/plugin.json      # Codex compatibility manifest
 ├── .claude-plugin/plugin.json     # Claude Code compatibility manifest
+├── mcp.json                        # Portable Anypoint Platform MCP definition
+├── .mcp.json                       # Codex/Claude compatibility MCP definition
 ├── hooks/                          # Completion gate shared by Codex and Claude Code
 ├── tools/raml-validator/           # Node + AMF runtime; not a Mule application dependency
 └── skills/
@@ -48,6 +50,14 @@ The second command discovers `#%RAML 1.0` API roots under the project, follows l
 `hooks/hooks.json` runs a Stop hook after an agent turn. In a Git worktree, it detects uncommitted `.raml` additions, edits, renames, moves, and deletions, determines their affected entry points, and blocks task completion until AMF succeeds. The hook only reads source files; it never writes application files and does not recurse into itself. A change after a successful run is detected from Git status and triggers fresh validation.
 
 Codex requires users to review and trust plugin hooks before execution. Claude Code runs the bundled plugin hook when the plugin is enabled. The bundled hook resolves the shared plugin path from `CLAUDE_PLUGIN_ROOT`, so Windows paths with spaces are supported. If the hook cannot determine the plugin root, Git worktree, entry points, or AMF runtime, it blocks completion and reports the problem. The development skill imposes the same explicit gate for environments where hooks are unavailable.
+
+## Anypoint Platform MCP
+
+The plugin packages MuleSoft Platform MCP Server as the OAuth-protected Streamable HTTP endpoint `https://omni.mulesoft.com/mcp` (US Cloud). The connection is defined in [mcp.json](mcp.json) and has no credentials in the repository.
+
+Before connecting, create an Anypoint connected app that acts on behalf of a user, allow the `full` and `offline_access` scopes, and register the callback URL shown by your MCP client. MuleSoft Platform MCP currently requires manual client registration, so enter the connected-app client ID and secret in the client’s OAuth connection flow; do not add them to either MCP manifest.
+
+For a non-US control plane, replace only the host with the equivalent Anypoint control-plane URL (for example, `https://eu1.omni.mulesoft.com/mcp`). See MuleSoft’s [Platform MCP setup guide](https://docs.mulesoft.com/mulesoft-mcp-server/getting-started-platform) for regions, callback URLs, and required permissions.
 
 ## Install or import
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "mulesoft-development-harness",
-  "version": "0.2.0",
-  "description": "Reusable Mule 4 implementation, RAML validation, and review workflows for MuleSoft applications.",
+  "version": "0.3.0",
+  "description": "Reusable Mule 4 implementation, RAML validation, review workflows, and Anypoint Platform access.",
   "extensions": {
     "com.openai": {
       "hooks": "./hooks/hooks.json"
