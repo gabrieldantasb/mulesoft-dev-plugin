@@ -1,0 +1,6 @@
+{
+  "name": "mulesoft-development-harness",
+  "version": "0.1.0",
+  "description": "Reusable Mule 4 implementation and review workflows for MuleSoft applications.",
+  "skills": "./skills/"
+}
