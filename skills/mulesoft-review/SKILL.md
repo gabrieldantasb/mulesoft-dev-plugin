@@ -18,5 +18,6 @@ Review only the files relevant to the request and assess changes against the rep
 - Verify each `flow-ref` `doc:name` exactly matches its target flow or sub-flow.
 - Check DataWeave nullable paths for meaningful `default` handling, duplicated mapping logic, material MIME types, and literal `\\n` sequences in XML attribute expressions.
 - Check related variables for unnecessary consecutive `set-variable` components, generic names, fragmented context, and implicit payload contracts.
+- If the diff creates, edits, renames, moves, or deletes `.raml` files, identify the affected API roots and require AMF validation after the final RAML change. Treat an unavailable validator or undiscoverable entry point as a blocker, not a passing result.
 
 Report only actionable findings, ordered by impact, with file and line references when available. If no issues are found, state that clearly and identify any validation that was not run. Do not modify tests unless explicitly asked.

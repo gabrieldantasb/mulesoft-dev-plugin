@@ -1,0 +1,17 @@
+{
+  "description": "Require AMF validation for uncommitted RAML changes before a MuleSoft task can complete.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"require(process.env.CLAUDE_PLUGIN_ROOT + '/hooks/raml-stop-hook.cjs')\"",
+            "timeout": 120,
+            "statusMessage": "Validating changed RAML API entry points"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "mulesoft-harness-raml-validator",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Shared AMF RAML 1.0 validation runtime for the MuleSoft development harness.",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "amf-client-js": "5.15.0"
+  }
+}

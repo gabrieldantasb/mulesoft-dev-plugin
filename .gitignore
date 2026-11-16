@@ -7,3 +7,6 @@ Thumbs.db
 # Local plugin and runtime state
 .claude/
 .codex/
+
+# Shared RAML validator dependencies (kept outside MuleSoft application repositories)
+tools/raml-validator/node_modules/
